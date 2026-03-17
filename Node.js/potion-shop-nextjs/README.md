@@ -15,7 +15,7 @@ A Zelda-inspired Next.js potion shop for testing Datadog APM Node.js tracer (dd-
 
 ```bash
 # Navigate to the shop
-cd /Users/benson.quach/benson/SANDBOX/Node.js/potion-shop
+cd /Users/benson.quach/benson/SANDBOX/Node.js/potion-shop-nextjs
 
 # Install dependencies
 npm install

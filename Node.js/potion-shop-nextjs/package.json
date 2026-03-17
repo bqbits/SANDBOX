@@ -1,5 +1,5 @@
 {
-  "name": "potion-shop",
+  "name": "potion-shop-nextjs",
   "version": "1.0.0",
   "description": "Benson's Potion Store - A Zelda-inspired Next.js shop for testing Datadog APM",
   "scripts": {

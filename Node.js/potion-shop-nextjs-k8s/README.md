@@ -18,7 +18,7 @@ A Zelda-inspired Next.js potion shop with Docker and Kubernetes support for test
 
 ```bash
 # Navigate to the shop
-cd /Users/benson.quach/benson/SANDBOX/Node.js/potion-shop-k8s
+cd /Users/benson.quach/benson/SANDBOX/Node.js/potion-shop-nextjs-k8s
 
 # Install dependencies
 npm install

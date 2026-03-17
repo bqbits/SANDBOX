@@ -1,5 +1,5 @@
 {
-  "name": "potion-shop-k8s",
+  "name": "potion-shop-nextjs-k8s",
   "version": "1.0.0",
   "description": "Benson's Potion Store - A Zelda-inspired Next.js shop with Docker and Kubernetes support for testing Datadog APM",
   "scripts": {
