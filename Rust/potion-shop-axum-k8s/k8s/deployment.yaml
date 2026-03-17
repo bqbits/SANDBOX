@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-shop-axum-k8s
+  labels:
+    app: potion-shop-axum-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: potion-shop-axum-k8s
+  template:
+    metadata:
+      labels:
+        app: potion-shop-axum-k8s
+    spec:
+      containers:
+      - name: potion-shop
+        image: potion-shop-axum-k8s:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5

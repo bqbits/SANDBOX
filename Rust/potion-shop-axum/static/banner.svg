@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="80" viewBox="0 0 400 80">
+  <rect width="400" height="80" fill="#0a1a0a" rx="8"/>
+  <rect x="4" y="4" width="392" height="72" fill="none" stroke="#f0c040" stroke-width="3" rx="6"/>
+  <text x="200" y="35" font-family="monospace" font-size="13" fill="#f0c040" text-anchor="middle" font-weight="bold">BENSON'S</text>
+  <text x="200" y="60" font-family="monospace" font-size="13" fill="#f0c040" text-anchor="middle" font-weight="bold">POTION SHOP</text>
+</svg>
