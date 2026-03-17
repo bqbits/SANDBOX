@@ -13,7 +13,7 @@ This is a Kubernetes-ready version of Benson's Potion Shop Flask application wit
 ## Project Structure
 
 ```
-potion-shop-k8s/
+potion-shop-flask-k8s/
 ├── app.py                          # Flask application
 ├── requirements.txt                # Python dependencies
 ├── Dockerfile                      # Multi-stage Docker build
@@ -37,16 +37,16 @@ potion-shop-k8s/
 ### 1. Build the Docker Image
 
 ```bash
-cd /Users/benson.quach/benson/SANDBOX/Python/potion-shop-k8s
+cd /Users/benson.quach/benson/SANDBOX/Python/potion-shop-flask-k8s
 
 # Build the image
-docker build -t bensons-potion-shop:latest .
+docker build -t bensons-potion-shop-flask:latest .
 
 # If using minikube, load the image into minikube
-minikube image load bensons-potion-shop:latest
+minikube image load bensons-potion-shop-flask:latest
 
 # If using kind, load the image into kind
-kind load docker-image bensons-potion-shop:latest
+kind load docker-image bensons-potion-shop-flask:latest
 ```
 
 ### 2. Configure Datadog Secret (Optional)
@@ -226,10 +226,10 @@ If using local images with minikube/kind, ensure you loaded the image:
 
 ```bash
 # For minikube
-minikube image ls | grep bensons-potion-shop
+minikube image ls | grep bensons-potion-shop-flask
 
 # For kind
-docker exec -it <kind-control-plane-container> crictl images | grep bensons-potion-shop
+docker exec -it <kind-control-plane-container> crictl images | grep bensons-potion-shop-flask
 ```
 
 ### Datadog Traces Not Appearing

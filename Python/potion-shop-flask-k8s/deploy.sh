@@ -30,7 +30,7 @@ echo -e "${GREEN}✓ Prerequisites OK${NC}\n"
 
 # Build Docker image
 echo -e "${YELLOW}Building Docker image...${NC}"
-docker build -t bensons-potion-shop:latest .
+docker build -t bensons-potion-shop-flask:latest .
 echo -e "${GREEN}✓ Image built successfully${NC}\n"
 
 # Detect Kubernetes environment
@@ -40,11 +40,11 @@ echo "Current context: $K8S_CONTEXT"
 
 if [[ "$K8S_CONTEXT" == *"minikube"* ]]; then
     echo -e "${YELLOW}Detected minikube - loading image...${NC}"
-    minikube image load bensons-potion-shop:latest
+    minikube image load bensons-potion-shop-flask:latest
     echo -e "${GREEN}✓ Image loaded into minikube${NC}\n"
 elif [[ "$K8S_CONTEXT" == *"kind"* ]]; then
     echo -e "${YELLOW}Detected kind - loading image...${NC}"
-    kind load docker-image bensons-potion-shop:latest
+    kind load docker-image bensons-potion-shop-flask:latest
     echo -e "${GREEN}✓ Image loaded into kind${NC}\n"
 else
     echo -e "${YELLOW}Cloud or other K8s environment detected${NC}"

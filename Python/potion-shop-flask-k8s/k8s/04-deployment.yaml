@@ -22,7 +22,7 @@ spec:
     spec:
       containers:
       - name: bensons-shop
-        image: bensons-potion-shop:latest
+        image: bensons-potion-shop-flask:latest
         imagePullPolicy: IfNotPresent
         ports:
         - name: http
