@@ -1,0 +1,41 @@
+# Git files
+.git
+.gitignore
+
+# IDE files
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+*.md
+
+# Kubernetes manifests
+k8s/
+
+# Build artifacts
+main
+potion-shop
+potion-shop-gin-k8s
+*.exe
+
+# Logs
+*.log
+logs/
+
+# Test files
+*_test.go
+
+# Environment files
+.env
+.env.*
+
+# Temporary files
+tmp/
+temp/

@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-shop-rails-k8s
+  labels:
+    app: potion-shop-rails-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: potion-shop-rails-k8s
+  template:
+    metadata:
+      labels:
+        app: potion-shop-rails-k8s
+    spec:
+      containers:
+      - name: potion-shop
+        image: potion-shop-rails-k8s:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: RAILS_ENV
+          value: "production"
+        - name: RAILS_LOG_TO_STDOUT
+          value: "true"
+        - name: RAILS_SERVE_STATIC_FILES
+          value: "true"
+        - name: SECRET_KEY_BASE
+          value: "kubernetes_secret_key_base_change_in_production"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5

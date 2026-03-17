@@ -1,0 +1,92 @@
+BENSON'S POTION SHOP - GO EDITION
+==================================
+
+Project Location: /Users/benson.quach/benson/SANDBOX/Go/potion-shop-gin
+
+PROJECT STRUCTURE:
+├── main.go                    # Application entry point and router setup
+├── go.mod                     # Go module dependencies
+├── go.sum                     # Dependency checksums
+├── README.md                  # Full documentation
+├── QUICKSTART.md              # Quick start guide
+├── Makefile                   # Build automation
+├── test-api.sh                # API testing script
+├── .gitignore                 # Git ignore rules
+├── potion-shop                # Compiled binary (gitignored)
+│
+├── handlers/
+│   └── handlers.go            # HTTP request handlers
+│
+├── models/
+│   └── models.go              # Data models and response structures
+│
+├── store/
+│   └── store.go               # In-memory data store with thread-safety
+│
+└── static/
+    └── index.html             # Frontend HTML/CSS/JavaScript
+
+KEY FEATURES:
+✓ Gin web framework for high-performance HTTP routing
+✓ Clean architecture with separated concerns
+✓ Thread-safe in-memory store with sync.RWMutex
+✓ RESTful API endpoints
+✓ Zelda-inspired retro pixel art theme
+✓ Animated UI with CSS animations
+✓ Random fun purchase messages
+✓ Statistics tracking (potions sold, gold earned)
+
+API ENDPOINTS:
+- GET  /                       # Main shop page (HTML)
+- GET  /api/stats              # Get shop statistics
+- POST /api/buy                # Purchase a potion (50 gold)
+- POST /api/reset              # Reset statistics
+- GET  /api/health             # Health check
+
+TECHNOLOGIES:
+- Go 1.21+
+- Gin Web Framework (github.com/gin-gonic/gin)
+- Pure HTML/CSS/JavaScript (no frontend framework)
+- In-memory storage (no database required)
+
+QUICK START:
+1. cd /Users/benson.quach/benson/SANDBOX/Go/potion-shop-gin
+2. make install    (or: go mod download)
+3. make run        (or: go run main.go)
+4. Open http://localhost:8080 in your browser
+
+COMPARISON TO NEXT.JS VERSION:
+- Similar UI/UX with retro Zelda theme
+- Same API contract and endpoints
+- Equivalent functionality
+- Faster startup and lower memory footprint
+- Simpler deployment (single binary)
+- Better concurrency handling with Go's goroutines
+
+POTION PRICES:
+- Red Potion: 50 Gold
+
+FUN PURCHASE MESSAGES (8 total):
+- "You got a Red Potion! Your hearts are refilled!"
+- "A fine purchase, brave hero! May it serve you well!"
+- "One Red Potion coming right up! Stay safe out there!"
+- "Excellent choice! This potion has saved many adventurers!"
+- "A wise investment! You'll thank yourself later!"
+- "Thank you for your patronage, noble warrior!"
+- "It's dangerous to go alone! Take this potion!"
+- "May this potion guide you to victory!"
+
+THREAD SAFETY:
+The store uses sync.RWMutex to ensure thread-safe concurrent access.
+Multiple users can purchase potions simultaneously without data races.
+
+DEVELOPMENT:
+- Run: make run
+- Build: make build
+- Test: make test (with server running)
+- Clean: make clean
+- Format: go fmt ./...
+- Vet: go vet ./...
+
+Built with ❤️ by Benson
+Inspired by The Legend of Zelda

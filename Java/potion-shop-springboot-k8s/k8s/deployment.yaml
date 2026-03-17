@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-shop-springboot-k8s
+  labels:
+    app: potion-shop-springboot-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: potion-shop-springboot-k8s
+  template:
+    metadata:
+      labels:
+        app: potion-shop-springboot-k8s
+    spec:
+      containers:
+      - name: potion-shop
+        image: potion-shop-springboot-k8s:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
+          name: http
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "production"
+        - name: SERVER_PORT
+          value: "8080"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 8080
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 5

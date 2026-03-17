@@ -1,0 +1,328 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: linear-gradient(135deg, #1a472a 0%, #2d5016 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #f0e68c;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* Shop Container */
+.shop-container {
+  max-width: 1200px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Banner */
+.banner {
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.banner-image {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Stats Container */
+.stats-container {
+  background: rgba(101, 67, 33, 0.9);
+  border: 4px solid #8b4513;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.stat-label {
+  color: #ffd700;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  color: #ffffff;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.3);
+  padding: 8px 16px;
+  border-radius: 4px;
+  min-width: 60px;
+  display: inline-block;
+}
+
+.gold-symbol {
+  color: #ffd700;
+  font-size: 20px;
+  animation: rotate 3s linear infinite;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Message Display */
+.message-display {
+  display: none;
+  background: rgba(139, 69, 19, 0.95);
+  border: 3px solid #ffd700;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 30px;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #f0e68c;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+/* Potions Grid */
+.potions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+/* Potion Card */
+.potion-card {
+  position: relative;
+  background: rgba(139, 69, 19, 0.9);
+  border: 4px solid #8b4513;
+  border-radius: 12px;
+  padding: 30px 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+}
+
+.potion-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 24px rgba(255, 215, 0, 0.3);
+  border-color: #ffd700;
+}
+
+/* Sparkles */
+.sparkle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ffd700;
+  border-radius: 50%;
+  animation: sparkle 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+.sparkle-tl {
+  top: 10px;
+  left: 10px;
+  animation-delay: 0s;
+}
+
+.sparkle-tr {
+  top: 10px;
+  right: 10px;
+  animation-delay: 0.5s;
+}
+
+.sparkle-bl {
+  bottom: 10px;
+  left: 10px;
+  animation-delay: 1s;
+}
+
+.sparkle-br {
+  bottom: 10px;
+  right: 10px;
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Potion Image */
+.potion-image {
+  width: 80px;
+  height: 120px;
+  margin: 0 auto 20px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Potion Name */
+.potion-name {
+  color: #ffd700;
+  font-size: 16px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+
+/* Potion Description */
+.potion-description {
+  color: #f0e68c;
+  font-size: 10px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  min-height: 60px;
+}
+
+/* Potion Price */
+.potion-price {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.price-value {
+  color: #ffd700;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.price-gold {
+  color: #ffa500;
+  font-size: 12px;
+}
+
+/* Buy Button */
+.buy-button {
+  background: linear-gradient(135deg, #8b4513 0%, #654321 100%);
+  border: 3px solid #ffd700;
+  border-radius: 8px;
+  color: #ffd700;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  padding: 15px 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  width: 100%;
+}
+
+.buy-button:hover {
+  background: linear-gradient(135deg, #654321 0%, #8b4513 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(255, 215, 0, 0.4);
+}
+
+.buy-button:active {
+  transform: scale(0.95);
+}
+
+/* Reset Container */
+.reset-container {
+  margin-top: 30px;
+}
+
+.reset-button {
+  background: rgba(139, 0, 0, 0.9);
+  border: 3px solid #8b0000;
+  border-radius: 8px;
+  color: #ffcccc;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 10px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.reset-button:hover {
+  background: rgba(139, 0, 0, 1);
+  border-color: #ff0000;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.reset-button:active {
+  transform: scale(0.95);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .potions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .stat {
+    font-size: 12px;
+  }
+
+  .banner-image {
+    max-width: 400px;
+  }
+}

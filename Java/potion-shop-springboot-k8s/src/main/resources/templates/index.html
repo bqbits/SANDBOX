@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benson's Potion Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="/images/banner.svg" alt="Benson's Potion Store">
+        </div>
+
+        <div class="welcome-message">
+            <p>⚔️ Welcome, brave adventurer! ⚔️</p>
+            <p>You have stumbled upon the finest potion shop in all of Hyrule!</p>
+            <p>Our potions are brewed with care and tested by heroes!</p>
+        </div>
+
+        <div id="message" class="message" style="display: none;"></div>
+
+        <div class="shop-grid">
+            <div class="potion-card">
+                <img src="/images/red-potion.svg" alt="Red Potion" class="potion-image">
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br><br>
+                    A legendary elixir brewed by the finest alchemists. Perfect for
+                    dungeon crawling and boss battles!
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+            </div>
+
+            <div class="potion-card">
+                <img src="/images/red-potion.svg" alt="Red Potion" class="potion-image">
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br><br>
+                    Stock up for your adventure! Every hero needs backup potions.
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+            </div>
+
+            <div class="potion-card">
+                <img src="/images/red-potion.svg" alt="Red Potion" class="potion-image">
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br><br>
+                    The third potion is always the lucky charm! Don't miss out!
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+            </div>
+        </div>
+
+        <div class="stats-footer">
+            <p>🗡️ Total Potions Sold: <span id="potions-sold">0</span> 🗡️</p>
+            <p>💰 Total Gold Earned: <span id="gold-earned">0</span> 💰</p>
+            <p class="quote">
+                "It's dangerous to go alone! Take a potion!" - Old Man, probably
+            </p>
+            <button class="reset-button" onclick="resetStats()">RESET STATS</button>
+        </div>
+    </div>
+
+    <script src="/js/shop.js"></script>
+</body>
+</html>

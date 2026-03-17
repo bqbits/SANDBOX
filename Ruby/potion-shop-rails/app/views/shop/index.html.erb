@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Benson's Potion Shop</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+</head>
+<body>
+  <div class="shop-container">
+    <div class="banner">
+      <%= image_tag "banner.svg", alt: "Benson's Potion Shop", class: "banner-image" %>
+    </div>
+
+    <div class="stats-container">
+      <div class="stat">
+        <span class="stat-label">Potions Sold:</span>
+        <span class="stat-value" id="potions-sold">0</span>
+      </div>
+      <div class="stat">
+        <span class="stat-label">Gold Earned:</span>
+        <span class="stat-value" id="gold-earned">0</span>
+        <span class="gold-symbol">⚜</span>
+      </div>
+    </div>
+
+    <div id="message-display" class="message-display"></div>
+
+    <div class="potions-grid">
+      <div class="potion-card">
+        <div class="sparkle sparkle-tl"></div>
+        <div class="sparkle sparkle-tr"></div>
+        <div class="sparkle sparkle-bl"></div>
+        <div class="sparkle sparkle-br"></div>
+        <%= image_tag "red-potion.svg", alt: "Red Potion", class: "potion-image" %>
+        <h3 class="potion-name">Red Potion</h3>
+        <p class="potion-description">Restores your hearts! Perfect for any adventurer.</p>
+        <div class="potion-price">
+          <span class="price-value">50</span>
+          <span class="price-gold">GOLD</span>
+        </div>
+        <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+      </div>
+
+      <div class="potion-card">
+        <div class="sparkle sparkle-tl"></div>
+        <div class="sparkle sparkle-tr"></div>
+        <div class="sparkle sparkle-bl"></div>
+        <div class="sparkle sparkle-br"></div>
+        <%= image_tag "red-potion.svg", alt: "Red Potion", class: "potion-image" %>
+        <h3 class="potion-name">Red Potion</h3>
+        <p class="potion-description">It's dangerous to go alone! Take this with you.</p>
+        <div class="potion-price">
+          <span class="price-value">50</span>
+          <span class="price-gold">GOLD</span>
+        </div>
+        <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+      </div>
+
+      <div class="potion-card">
+        <div class="sparkle sparkle-tl"></div>
+        <div class="sparkle sparkle-tr"></div>
+        <div class="sparkle sparkle-bl"></div>
+        <div class="sparkle sparkle-br"></div>
+        <%= image_tag "red-potion.svg", alt: "Red Potion", class: "potion-image" %>
+        <h3 class="potion-name">Red Potion</h3>
+        <p class="potion-description">A wise investment for your next quest!</p>
+        <div class="potion-price">
+          <span class="price-value">50</span>
+          <span class="price-gold">GOLD</span>
+        </div>
+        <button class="buy-button" onclick="buyPotion()">BUY NOW</button>
+      </div>
+    </div>
+
+    <div class="reset-container">
+      <button class="reset-button" onclick="resetStats()">RESET STATS</button>
+    </div>
+  </div>
+
+  <script>
+    // Fetch stats on page load
+    window.addEventListener('DOMContentLoaded', fetchStats);
+
+    async function fetchStats() {
+      try {
+        const response = await fetch('/api/stats');
+        const data = await response.json();
+        updateStatsDisplay(data);
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    }
+
+    async function buyPotion() {
+      try {
+        const response = await fetch('/api/buy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+          }
+        });
+        const data = await response.json();
+
+        // Update stats
+        updateStatsDisplay(data);
+
+        // Show message
+        showMessage(data.message);
+      } catch (error) {
+        console.error('Error buying potion:', error);
+        showMessage('Error purchasing potion. Please try again!');
+      }
+    }
+
+    async function resetStats() {
+      if (!confirm('Are you sure you want to reset all statistics?')) {
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/reset', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'X-CSRF-Token': document.querySelector('[name="csrf-token"]').content
+          }
+        });
+        const data = await response.json();
+
+        // Update stats
+        updateStatsDisplay(data.stats);
+
+        // Show message
+        showMessage(data.message);
+      } catch (error) {
+        console.error('Error resetting stats:', error);
+      }
+    }
+
+    function updateStatsDisplay(data) {
+      document.getElementById('potions-sold').textContent = data.potions_sold || 0;
+      document.getElementById('gold-earned').textContent = data.gold_earned || 0;
+    }
+
+    function showMessage(message) {
+      const messageDisplay = document.getElementById('message-display');
+      messageDisplay.textContent = message;
+      messageDisplay.style.display = 'block';
+
+      // Auto-hide after 4 seconds
+      setTimeout(() => {
+        messageDisplay.style.display = 'none';
+      }, 4000);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,324 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+
+/* Zelda-inspired Potion Shop Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Press Start 2P', 'Courier New', monospace;
+  background: linear-gradient(135deg, #1a472a 0%, #2d5016 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.zelda-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.banner-container {
+  text-align: center;
+  margin-bottom: 30px;
+  animation: fadeIn 1s ease-in;
+}
+
+.banner {
+  max-width: 600px;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+}
+
+.shop-frame {
+  background: #f4e4c1;
+  border: 8px solid #8b4513;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.shop-frame::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 2px solid #d4a574;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.shop-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.shop-title {
+  font-size: 28px;
+  color: #2d5016;
+  text-shadow: 2px 2px 0px #8b6914;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+}
+
+.shop-subtitle {
+  font-size: 12px;
+  color: #5a3a1a;
+  margin-top: 10px;
+}
+
+.stats-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.stat-box {
+  background: #2d5016;
+  border: 4px solid #1a472a;
+  border-radius: 10px;
+  padding: 20px 40px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.stat-label {
+  font-size: 10px;
+  color: #c9aa71;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-size: 24px;
+  color: #ffd700;
+  text-shadow: 2px 2px 0px #8b6914;
+}
+
+.potions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.potion-card {
+  background: linear-gradient(135deg, #fff9e6 0%, #f4e4c1 100%);
+  border: 4px solid #8b4513;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+}
+
+.potion-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.potion-card::before {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  border: 2px solid #d4a574;
+  border-radius: 12px;
+  pointer-events: none;
+}
+
+.potion-image {
+  width: 120px;
+  height: 120px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.potion-name {
+  font-size: 16px;
+  color: #8b0000;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 0px #ffd700;
+}
+
+.potion-description {
+  font-size: 10px;
+  color: #5a3a1a;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+.potion-price {
+  font-size: 14px;
+  color: #2d5016;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.buy-button {
+  background: linear-gradient(135deg, #228b22 0%, #006400 100%);
+  color: white;
+  border: 3px solid #1a472a;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.buy-button:hover {
+  background: linear-gradient(135deg, #32cd32 0%, #228b22 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.buy-button:active {
+  transform: scale(0.98);
+}
+
+.message-box {
+  background: #2d5016;
+  color: #ffd700;
+  border: 4px solid #1a472a;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 20px;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+.message-box.show {
+  opacity: 1;
+  transform: translateY(0);
+  animation: pulse 0.5s ease;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.reset-container {
+  text-align: center;
+}
+
+.reset-button {
+  background: linear-gradient(135deg, #8b0000 0%, #600000 100%);
+  color: white;
+  border: 3px solid #4a0000;
+  border-radius: 8px;
+  padding: 12px 30px;
+  font-size: 10px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.reset-button:hover {
+  background: linear-gradient(135deg, #a00000 0%, #8b0000 100%);
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.reset-button:active {
+  transform: scale(0.98);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .shop-title {
+    font-size: 20px;
+  }
+
+  .shop-subtitle {
+    font-size: 10px;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .potions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-value {
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+  }
+
+  .shop-frame {
+    padding: 20px;
+  }
+
+  .shop-title {
+    font-size: 16px;
+  }
+
+  .banner {
+    max-width: 100%;
+  }
+}
