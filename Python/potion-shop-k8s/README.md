@@ -13,7 +13,7 @@ This is a Kubernetes-ready version of Benson's Potion Shop Flask application wit
 ## Project Structure
 
 ```
-benson-potion-shop-k8s/
+potion-shop-k8s/
 ├── app.py                          # Flask application
 ├── requirements.txt                # Python dependencies
 ├── Dockerfile                      # Multi-stage Docker build
@@ -37,7 +37,7 @@ benson-potion-shop-k8s/
 ### 1. Build the Docker Image
 
 ```bash
-cd /Users/benson.quach/benson/SANDBOX/Python/benson-potion-shop-k8s
+cd /Users/benson.quach/benson/SANDBOX/Python/potion-shop-k8s
 
 # Build the image
 docker build -t bensons-potion-shop:latest .
@@ -321,7 +321,7 @@ kubectl delete namespace bensons-shop
 
 ## Differences from Local Version
 
-This Kubernetes version differs from the local `benson-potion-shop` in:
+This Kubernetes version differs from the local `potion-shop` in:
 
 1. **Environment:** Configured for `DD_ENV=kubernetes` instead of `DD_ENV=local`
 2. **Agent Hostname:** Points to Kubernetes service instead of localhost
