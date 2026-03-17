@@ -1,0 +1,27 @@
+# Virtual Environment
+venv/
+env/
+*.pyc
+__pycache__/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Flask
+instance/
+.webassets-cache
+
+# Environment variables
+.env
+.flaskenv
+
+# Documentation with sensitive info (local only)
+DATADOG_SETUP_GUIDE.md
+DDTRACE_AUTO_INSTRUMENTATION.md

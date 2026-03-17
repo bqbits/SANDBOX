@@ -1,0 +1,35 @@
+<svg width="600" height="120" xmlns="http://www.w3.org/2000/svg" style="image-rendering: pixelated;">
+  <!-- Wooden sign background -->
+  <rect x="20" y="20" width="560" height="80" fill="#8B4513" stroke="#654321" stroke-width="4"/>
+
+  <!-- Wood grain effect -->
+  <rect x="30" y="30" width="540" height="8" fill="#A0522D" opacity="0.3"/>
+  <rect x="30" y="50" width="540" height="6" fill="#A0522D" opacity="0.2"/>
+  <rect x="30" y="70" width="540" height="8" fill="#A0522D" opacity="0.3"/>
+
+  <!-- Left chain -->
+  <rect x="60" y="10" width="8" height="20" fill="#808080"/>
+  <rect x="56" y="6" width="16" height="8" fill="#606060"/>
+
+  <!-- Right chain -->
+  <rect x="532" y="10" width="8" height="20" fill="#808080"/>
+  <rect x="528" y="6" width="16" height="8" fill="#606060"/>
+
+  <!-- Sign border decoration -->
+  <rect x="25" y="25" width="550" height="4" fill="#654321"/>
+  <rect x="25" y="91" width="550" height="4" fill="#654321"/>
+
+  <!-- Text: "BENSON'S" -->
+  <text x="300" y="50" font-family="'Press Start 2P', 'Courier New', monospace"
+        font-size="20" fill="#FFD700" text-anchor="middle" font-weight="bold">BENSON'S</text>
+
+  <!-- Text: "POTION STORE" -->
+  <text x="300" y="80" font-family="'Press Start 2P', 'Courier New', monospace"
+        font-size="18" fill="#FFD700" text-anchor="middle" font-weight="bold">POTION STORE</text>
+
+  <!-- Shadow effect for text -->
+  <text x="302" y="52" font-family="'Press Start 2P', 'Courier New', monospace"
+        font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold" opacity="0.5">BENSON'S</text>
+  <text x="302" y="82" font-family="'Press Start 2P', 'Courier New', monospace"
+        font-size="18" fill="#8B4513" text-anchor="middle" font-weight="bold" opacity="0.5">POTION STORE</text>
+</svg>
