@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-shop-k8s
+  labels:
+    app: potion-shop-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: potion-shop-k8s
+  template:
+    metadata:
+      labels:
+        app: potion-shop-k8s
+    spec:
+      containers:
+      - name: potion-shop
+        image: potion-shop-k8s:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+          name: http
+        env:
+        - name: NODE_ENV
+          value: "production"
+        - name: PORT
+          value: "3000"
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 5
