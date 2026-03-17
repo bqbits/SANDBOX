@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: potion-shop-laravel-k8s
+  labels:
+    app: potion-shop-laravel-k8s
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: potion-shop-laravel-k8s
+  template:
+    metadata:
+      labels:
+        app: potion-shop-laravel-k8s
+    spec:
+      containers:
+      - name: potion-shop
+        image: potion-shop-laravel-k8s:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
+          name: http
+        env:
+        - name: APP_ENV
+          value: "production"
+        - name: APP_DEBUG
+          value: "false"
+        - name: APP_KEY
+          value: "base64:CHANGEME"
+        - name: SESSION_DRIVER
+          value: "file"
+        livenessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          httpGet:
+            path: /api/health
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "256Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"

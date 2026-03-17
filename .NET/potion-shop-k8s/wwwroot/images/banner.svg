@@ -1,0 +1,26 @@
+<svg width="800" height="200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&amp;display=swap');
+      .title { font-family: 'Press Start 2P', cursive; fill: #ffd700; font-size: 48px; }
+      .subtitle { font-family: 'Press Start 2P', cursive; fill: #f0e68c; font-size: 16px; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="200" fill="#1a472a" rx="10"/>
+  <rect x="10" y="10" width="780" height="180" fill="none" stroke="#ffd700" stroke-width="4" rx="8"/>
+
+  <!-- Sparkles -->
+  <text x="50" y="50" font-size="24" fill="#ffd700">✨</text>
+  <text x="720" y="50" font-size="24" fill="#ffd700">✨</text>
+  <text x="80" y="160" font-size="24" fill="#ffd700">✨</text>
+  <text x="690" y="160" font-size="24" fill="#ffd700">✨</text>
+
+  <!-- Title -->
+  <text x="400" y="95" class="title" text-anchor="middle">BENSON'S</text>
+  <text x="400" y="140" class="title" text-anchor="middle">POTION STORE</text>
+
+  <!-- Subtitle -->
+  <text x="400" y="175" class="subtitle" text-anchor="middle">~ Est. 2026 ~</text>
+</svg>

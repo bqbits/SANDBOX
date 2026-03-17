@@ -1,0 +1,194 @@
+﻿@{
+    ViewData["Title"] = "Benson's Potion Store";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="container">
+        <div class="banner">
+            <img src="~/images/banner.svg" alt="Benson's Potion Store" />
+        </div>
+
+        <div class="welcome-message">
+            <p>⚔️ Welcome, brave adventurer! ⚔️</p>
+            <p>You have stumbled upon the finest potion shop in all of Hyrule!</p>
+            <p>Our potions are brewed with care and tested by heroes!</p>
+        </div>
+
+        <div id="message" class="message" style="display: none;"></div>
+
+        <div class="shop-grid">
+            <!-- Red Potion 1 -->
+            <div class="potion-card">
+                <img src="~/images/red-potion.svg" alt="Red Potion" class="potion-image" />
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br /><br />
+                    A legendary elixir brewed by the finest alchemists. Perfect for
+                    dungeon crawling and boss battles!
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button onclick="buyPotion()" class="buy-button" id="buyButton1">
+                    BUY NOW
+                </button>
+            </div>
+
+            <!-- Red Potion 2 -->
+            <div class="potion-card">
+                <img src="~/images/red-potion.svg" alt="Red Potion" class="potion-image" />
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br /><br />
+                    Stock up for your adventure! Every hero needs backup potions.
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button onclick="buyPotion()" class="buy-button" id="buyButton2">
+                    BUY NOW
+                </button>
+            </div>
+
+            <!-- Red Potion 3 -->
+            <div class="potion-card">
+                <img src="~/images/red-potion.svg" alt="Red Potion" class="potion-image" />
+                <h2 class="potion-name">RED POTION</h2>
+                <p class="potion-description">
+                    Restores all your <span class="heart">❤️</span> hearts!
+                    <br /><br />
+                    The third potion is always the lucky charm! Don't miss out!
+                </p>
+                <div class="price">
+                    <span class="gold-coin">⭐</span> 50 GOLD <span class="gold-coin">⭐</span>
+                </div>
+                <button onclick="buyPotion()" class="buy-button" id="buyButton3">
+                    BUY NOW
+                </button>
+            </div>
+        </div>
+
+        <div class="stats-footer">
+            <p>🗡️ Total Potions Sold: <span id="potionsSold">0</span> 🗡️</p>
+            <p>💰 Total Gold Earned: <span id="goldEarned">0</span> 💰</p>
+            <p class="quote">
+                "It's dangerous to go alone! Take a potion!" - Old Man, probably
+            </p>
+            <button onclick="resetStats()" class="reset-button">
+                RESET STATS
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let isLoading = false;
+
+        // Fetch initial stats on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            fetchStats();
+        });
+
+        // Fetch shop statistics
+        async function fetchStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const data = await response.json();
+                updateStats(data.potionsSold, data.goldEarned);
+            } catch (error) {
+                console.error('Failed to fetch stats:', error);
+            }
+        }
+
+        // Buy a potion
+        async function buyPotion() {
+            if (isLoading) return;
+
+            isLoading = true;
+            setButtonsDisabled(true);
+
+            try {
+                const response = await fetch('/api/buy', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    showMessage(data.message);
+                    updateStats(data.stats.potionsSold, data.stats.goldEarned);
+                }
+            } catch (error) {
+                console.error('Failed to buy potion:', error);
+            } finally {
+                isLoading = false;
+                setButtonsDisabled(false);
+            }
+        }
+
+        // Reset shop statistics
+        async function resetStats() {
+            try {
+                const response = await fetch('/api/reset', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    updateStats(data.stats.potionsSold, data.stats.goldEarned);
+                    hideMessage();
+                }
+            } catch (error) {
+                console.error('Failed to reset stats:', error);
+            }
+        }
+
+        // Update stats display
+        function updateStats(potionsSold, goldEarned) {
+            document.getElementById('potionsSold').textContent = potionsSold;
+            document.getElementById('goldEarned').textContent = goldEarned;
+        }
+
+        // Show message with auto-hide after 4 seconds
+        function showMessage(text) {
+            const messageEl = document.getElementById('message');
+            messageEl.textContent = text;
+            messageEl.style.display = 'block';
+
+            setTimeout(() => {
+                hideMessage();
+            }, 4000);
+        }
+
+        // Hide message
+        function hideMessage() {
+            const messageEl = document.getElementById('message');
+            messageEl.style.display = 'none';
+        }
+
+        // Enable/disable all buy buttons
+        function setButtonsDisabled(disabled) {
+            const buttons = document.querySelectorAll('.buy-button');
+            buttons.forEach(button => {
+                button.disabled = disabled;
+                button.textContent = disabled ? 'BUYING...' : 'BUY NOW';
+            });
+        }
+    </script>
+</body>
+</html>
