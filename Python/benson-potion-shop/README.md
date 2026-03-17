@@ -14,7 +14,7 @@ A Zelda-inspired Flask potion shop for testing Datadog APM Python tracer (dd-tra
 
 ```bash
 # Navigate to the shop
-cd /Users/benson.quach/benson/KNAPSACK/Python/benson-flask-shop
+cd /Users/benson.quach/benson/SANDBOX/Python/benson-potion-shop
 
 # Create virtual environment
 python3 -m venv venv
