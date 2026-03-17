@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: potion-shop-k8s-dotnet
+  name: potion-shop-aspnet-k8s-dotnet
   labels:
-    app: potion-shop-k8s-dotnet
+    app: potion-shop-aspnet-k8s-dotnet
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: potion-shop-k8s-dotnet
+      app: potion-shop-aspnet-k8s-dotnet
   template:
     metadata:
       labels:
-        app: potion-shop-k8s-dotnet
+        app: potion-shop-aspnet-k8s-dotnet
     spec:
       containers:
       - name: potion-shop
-        image: potion-shop-k8s-dotnet:latest
+        image: potion-shop-aspnet-k8s-dotnet:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000

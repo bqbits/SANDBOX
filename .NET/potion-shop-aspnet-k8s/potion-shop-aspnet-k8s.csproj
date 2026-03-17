@@ -4,7 +4,7 @@
     <TargetFramework>net9.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>potion_shop_k8s</RootNamespace>
+    <RootNamespace>potion_shop_aspnet_k8s</RootNamespace>
   </PropertyGroup>
 
 </Project>

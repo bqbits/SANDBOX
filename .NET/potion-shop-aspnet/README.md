@@ -15,7 +15,7 @@ A Zelda-inspired ASP.NET Core MVC potion shop for testing APM solutions with .NE
 
 ```bash
 # Navigate to the shop
-cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop
+cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop-aspnet
 
 # Run the development server
 dotnet run
@@ -109,7 +109,7 @@ Response:
 ## Project Structure
 
 ```
-potion-shop/
+potion-shop-aspnet/
 ├── Controllers/
 │   ├── ApiController.cs       # API endpoints
 │   └── HomeController.cs      # Main shop view
@@ -179,7 +179,7 @@ For production use, consider using a database like SQL Server, PostgreSQL, or Re
 ## Node.js vs .NET Comparison
 
 This is the .NET equivalent of the Node.js Next.js application at:
-`/Users/benson.quach/benson/SANDBOX/Node.js/potion-shop`
+`/Users/benson.quach/benson/SANDBOX/Node.js/potion-shop-nextjs`
 
 Key differences:
 - **Framework**: ASP.NET Core MVC vs Next.js

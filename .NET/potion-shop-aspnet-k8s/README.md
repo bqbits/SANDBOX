@@ -35,7 +35,7 @@ A Zelda-inspired ASP.NET Core MVC potion shop with Docker and Kubernetes support
 
 ```bash
 # Navigate to the project directory
-cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop-k8s
+cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop-aspnet-k8s
 
 # Restore dependencies
 dotnet restore
@@ -62,13 +62,13 @@ dotnet run --configuration Release
 
 ```bash
 # Navigate to project directory
-cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop-k8s
+cd /Users/benson.quach/benson/SANDBOX/.NET/potion-shop-aspnet-k8s
 
 # Build the Docker image
-docker build -t potion-shop-k8s-dotnet:latest .
+docker build -t potion-shop-aspnet-k8s-dotnet:latest .
 
 # Run the container
-docker run -p 5000:5000 potion-shop-k8s-dotnet:latest
+docker run -p 5000:5000 potion-shop-aspnet-k8s-dotnet:latest
 ```
 
 Visit: http://localhost:5000
@@ -113,10 +113,10 @@ Run with: `docker-compose up`
 
 ```bash
 # Build the Docker image
-docker build -t potion-shop-k8s-dotnet:latest .
+docker build -t potion-shop-aspnet-k8s-dotnet:latest .
 
 # For minikube, load the image into minikube
-minikube image load potion-shop-k8s-dotnet:latest
+minikube image load potion-shop-aspnet-k8s-dotnet:latest
 
 # For Docker Desktop K8s, the image is already available
 
@@ -129,14 +129,14 @@ kubectl get pods
 kubectl get services
 
 # Wait for pods to be ready
-kubectl wait --for=condition=ready pod -l app=potion-shop-k8s-dotnet --timeout=60s
+kubectl wait --for=condition=ready pod -l app=potion-shop-aspnet-k8s-dotnet --timeout=60s
 ```
 
 ### Access the Application
 
 #### For Minikube:
 ```bash
-minikube service potion-shop-k8s-dotnet
+minikube service potion-shop-aspnet-k8s-dotnet
 ```
 
 #### For Docker Desktop Kubernetes:
@@ -167,10 +167,10 @@ The deployment includes:
 
 ```bash
 # View logs from all pods
-kubectl logs -l app=potion-shop-k8s-dotnet
+kubectl logs -l app=potion-shop-aspnet-k8s-dotnet
 
 # Follow logs in real-time
-kubectl logs -f deployment/potion-shop-k8s-dotnet
+kubectl logs -f deployment/potion-shop-aspnet-k8s-dotnet
 
 # View logs from a specific pod
 kubectl logs <pod-name>
@@ -180,29 +180,29 @@ kubectl logs <pod-name>
 
 ```bash
 # Scale to 3 replicas
-kubectl scale deployment potion-shop-k8s-dotnet --replicas=3
+kubectl scale deployment potion-shop-aspnet-k8s-dotnet --replicas=3
 
 # Check scaling progress
 kubectl get pods -w
 
 # Scale back to 2
-kubectl scale deployment potion-shop-k8s-dotnet --replicas=2
+kubectl scale deployment potion-shop-aspnet-k8s-dotnet --replicas=2
 ```
 
 ### Update the Deployment
 
 ```bash
 # After making changes, rebuild the image
-docker build -t potion-shop-k8s-dotnet:latest .
+docker build -t potion-shop-aspnet-k8s-dotnet:latest .
 
 # Reload image (for minikube)
-minikube image load potion-shop-k8s-dotnet:latest
+minikube image load potion-shop-aspnet-k8s-dotnet:latest
 
 # Restart the deployment to pick up new image
-kubectl rollout restart deployment/potion-shop-k8s-dotnet
+kubectl rollout restart deployment/potion-shop-aspnet-k8s-dotnet
 
 # Check rollout status
-kubectl rollout status deployment/potion-shop-k8s-dotnet
+kubectl rollout status deployment/potion-shop-aspnet-k8s-dotnet
 ```
 
 ## API Endpoints
@@ -342,7 +342,7 @@ using Datadog.Trace;
 builder.Services.AddSingleton<Tracer>(serviceProvider =>
 {
     var settings = TracerSettings.FromDefaultSources();
-    settings.ServiceName = "potion-shop-k8s-dotnet";
+    settings.ServiceName = "potion-shop-aspnet-k8s-dotnet";
     settings.Environment = "kubernetes";
     return new Tracer(settings);
 });
@@ -356,7 +356,7 @@ env:
     fieldRef:
       fieldPath: status.hostIP
 - name: DD_SERVICE
-  value: "potion-shop-k8s-dotnet"
+  value: "potion-shop-aspnet-k8s-dotnet"
 - name: DD_ENV
   value: "kubernetes"
 - name: DD_VERSION
@@ -385,13 +385,13 @@ kubectl delete -f k8s/
 ### Remove Docker Containers and Images
 ```bash
 # Stop running containers
-docker ps | grep potion-shop-k8s-dotnet | awk '{print $1}' | xargs docker stop
+docker ps | grep potion-shop-aspnet-k8s-dotnet | awk '{print $1}' | xargs docker stop
 
 # Remove containers
-docker ps -a | grep potion-shop-k8s-dotnet | awk '{print $1}' | xargs docker rm
+docker ps -a | grep potion-shop-aspnet-k8s-dotnet | awk '{print $1}' | xargs docker rm
 
 # Remove image
-docker rmi potion-shop-k8s-dotnet:latest
+docker rmi potion-shop-aspnet-k8s-dotnet:latest
 ```
 
 ## Troubleshooting
@@ -424,8 +424,8 @@ curl http://localhost:5000/api/health
 minikube image ls | grep potion-shop
 
 # If not present, reload
-docker build -t potion-shop-k8s-dotnet:latest .
-minikube image load potion-shop-k8s-dotnet:latest
+docker build -t potion-shop-aspnet-k8s-dotnet:latest .
+minikube image load potion-shop-aspnet-k8s-dotnet:latest
 ```
 
 ## Development Notes
